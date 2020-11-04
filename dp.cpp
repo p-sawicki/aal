@@ -30,8 +30,6 @@ Tower get_highest_tower(std::vector<Brick> &bricks) {
                 break;
         }
 
-        int apexes_size = apexes.size();
-
         for (const Brick &apex : apexes) {
             Tower *best_tower_for_apex = nullptr;
             for (auto tower = towers.begin(); tower != towers.end(); ++tower) {
