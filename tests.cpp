@@ -1,4 +1,5 @@
 #include "dp.h"
+#include "gen.h"
 #include <assert.h>
 
 void test_highest_tower1() {
@@ -29,7 +30,23 @@ void test_highest_tower2() {
     assert(t1.bricks.size() == 6);
 }
 
+void test_tower_correctness() {
+    auto stream = std::stringstream();
+    generate(1000, 1, 1000, stream);
+
+    Tower tower = get_highest_tower(stream);
+    int size = tower.bricks.size();
+    double depth = tower.bricks.front().depth;
+    for (int i = 1; i < size; ++i) {
+        assert(tower.bricks[i].width > tower.bricks[i - 1].width && 
+                tower.bricks[i].height > tower.bricks[i - 1].height);
+        depth += tower.bricks[i].depth;
+    }
+    assert(depth == tower.depth);
+}
+
 int main() {
     test_highest_tower1();
     test_highest_tower2();
+    test_tower_correctness();
 }
