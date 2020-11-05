@@ -24,6 +24,9 @@ dp: dp.o main.o
 gen: gen_main.o gen.o
 	$(CC) gen_main.o gen.o -o gen
 
+timer: timer.cpp gen.o dp.o
+	$(CC) timer.cpp gen.o dp.o -o timer
+
 .PHONY: clean
 clean:
-	rm -rf *.o tests dp gen
+	rm -rf *.o tests dp gen timer
