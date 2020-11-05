@@ -5,6 +5,7 @@
 #include <list>
 #include <vector>
 #include <algorithm>
+#include <sstream>
 
 struct Brick {
     double height;
@@ -38,6 +39,7 @@ struct Tower {
     }
 };
 
+Tower get_highest_tower(std::istream &stream = std::cin);
 Tower get_highest_tower(std::vector<Brick> &bricks);
 
 #endif //DP_H
