@@ -25,13 +25,13 @@ void timer(int bricks) {
 int main(int argc, char **argv) {
     repeats = argc > 1 ? atoi(argv[1]) : DEFAULT_REPEATS;
 
-    std::cout << "N;Average duration (seconds)\n";
-    for (int bricks = 13000; bricks <= 13000; bricks += 100) {
+    std::cout << "N,Average duration (seconds)\n";
+    for (int bricks = 100; bricks <= MAX_BRICKS; bricks += 100) {
         average_duration = 0;
         auto threads = std::vector<std::thread>();
         for (int i = 0; i < repeats; ++i)
             threads.emplace_back(std::thread(timer, bricks));
         std::for_each(threads.begin(), threads.end(), [](std::thread &thread) {thread.join(); });
-        std::cout << bricks << ";" << average_duration << "\n";
+        std::cout << bricks << "," << average_duration << "\n";
     }
 }
