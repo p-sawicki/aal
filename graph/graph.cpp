@@ -11,10 +11,6 @@ bool Brick::operator>(const Brick& rhs) const {
     return width > rhs.width && height > rhs.height;
 }
 
-std::ostream &operator<<(std::ostream &os, Brick const &b) { 
-    return os << b.width << "\t\t\t" << b.height << "\t\t\t" << b.depth;
-}
-
 /*
  * DAG implementation
  */
