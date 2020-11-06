@@ -12,4 +12,4 @@
 Tower get_highest_tower(std::istream &stream = std::cin);
 Tower get_highest_tower(std::vector<Brick> &bricks);
 
-#endif //BRICK_H
+#endif //DP_H

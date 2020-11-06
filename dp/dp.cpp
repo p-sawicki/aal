@@ -1,5 +1,9 @@
 #include "dp.h"
 
+bool Brick::operator<(const Brick& rhs) const {
+    return width < rhs.width;
+}
+
 Tower get_highest_tower(std::vector<Brick> &bricks) {
     std::sort(bricks.begin(), bricks.end());
     auto towers = std::list<Tower>();
