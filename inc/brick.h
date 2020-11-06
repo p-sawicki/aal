@@ -1,5 +1,5 @@
-#ifndef DP_H
-#define DP_H
+#ifndef BRICK_H
+#define BRICK_H
 
 #include <iostream>
 #include <list>
@@ -39,7 +39,4 @@ struct Tower {
     }
 };
 
-Tower get_highest_tower(std::istream &stream = std::cin);
-Tower get_highest_tower(std::vector<Brick> &bricks);
-
-#endif //DP_H
+#endif //BRICK_H

@@ -1,32 +1,29 @@
 CC=g++
+CFLAGS=-I inc -Wall --std=c++17 -O3
 
-dp.o: dp.h dp.cpp
-	$(CC) -c dp.cpp -o dp.o
+default: all
+all: dp graph gen tests timer
 
-tests.o: tests.cpp
-	$(CC) -c tests.cpp -o tests.o
+# Dynamic-programming solution
+dp.o: dp/dp.cpp
+	$(CC) $(CFLAGS) -c dp/dp.cpp -o dp/dp.o
+dp: dp/dp_main.cpp dp.o
+	$(CC) $(CFLAGS) dp/dp.o dp/dp_main.cpp -o bin/dp
 
-main.o: dp_main.cpp
-	$(CC) -c dp_main.cpp -o main.o
+# Tests generator
+gen.o: inc/gen.h gen/gen.cpp
+	$(CC) $(CFLAGS) -c gen/gen.cpp -o gen/gen.o
+gen: gen/gen_main.cpp gen.o
+	$(CC) $(CFLAGS) gen/gen_main.cpp gen/gen.o -o bin/gen
 
-gen.o: gen.h gen.cpp
-	$(CC) -c gen.cpp -o gen.o
+# Trivial tests suite
+tests: tests.cpp dp.o gen.o
+	$(CC) $(CFLAGS) tests.cpp dp/dp.o gen/gen.o -o bin/tests
 
-gen_main.o: gen_main.cpp
-	$(CC) -c gen_main.cpp -o gen_main.o
-
-tests: dp.o tests.o gen.o
-	$(CC) tests.o dp.o gen.o -o tests
-
-dp: dp.o main.o
-	$(CC) dp.o main.o -o dp
-
-gen: gen_main.o gen.o
-	$(CC) gen_main.o gen.o -o gen
-
+# Auto-tests runner with timer
 timer: timer.cpp gen.o dp.o
-	$(CC) timer.cpp gen.o dp.o -o timer -lpthread
+	$(CC) $(CFLAGS) timer.cpp gen/gen.o dp/dp.o -lpthread -o bin/timer
 
 .PHONY: clean
 clean:
-	rm -rf *.o tests dp gen timer
+	rm -f bin/* **/*.o
