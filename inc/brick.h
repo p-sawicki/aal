@@ -17,14 +17,16 @@ struct Brick {
         height = std::max(x, y);
     }
 
-    bool operator<(const Brick& rhs) const {
-        return width < rhs.width;
-    }
+    bool operator<(const Brick& rhs) const;
+    bool operator>(const Brick& rhs) const;
 };
+
 
 struct Tower {
     std::vector<Brick> bricks;
     double depth;
+
+    Tower() : depth(0) {};
 
     Tower(const Brick &base, Tower* tower) {
         depth = base.depth;

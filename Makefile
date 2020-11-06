@@ -10,6 +10,12 @@ dp.o: dp/dp.cpp
 dp: dp/dp_main.cpp dp.o
 	$(CC) $(CFLAGS) dp/dp.o dp/dp_main.cpp -o bin/dp
 
+# Graph solution
+graph.o: inc/graph.h graph/graph.cpp
+	$(CC) $(CFLAGS) -c graph/graph.cpp -o graph/graph.o
+graph: graph/graph_main.cpp graph.o
+	$(CC) $(CFLAGS) graph/graph.o graph/graph_main.cpp -o bin/graph
+
 # Tests generator
 gen.o: inc/gen.h gen/gen.cpp
 	$(CC) $(CFLAGS) -c gen/gen.cpp -o gen/gen.o
