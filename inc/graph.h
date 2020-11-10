@@ -1,17 +1,13 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include <vector>
-#include <algorithm>
-#include <sstream>
-
 #include "brick.h"
 
 struct Node {
     Brick element;
     std::vector<Node*> edgesIn;
     std::vector<Node*> edgesOut;
-    ssize_t topoIndex;
+    size_t topoIndex;
     bool topoVisited;
     double topHeight;
 

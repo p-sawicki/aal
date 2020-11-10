@@ -27,8 +27,8 @@ tests: tests.cpp dp.o gen.o
 	$(CC) $(CFLAGS) tests.cpp dp/dp.o gen/gen.o -o bin/tests
 
 # Auto-tests runner with timer
-timer: timer.cpp gen.o dp.o
-	$(CC) $(CFLAGS) timer.cpp gen/gen.o dp/dp.o -lpthread -o bin/timer
+timer: timer.cpp gen.o dp.o graph.o
+	$(CC) $(CFLAGS) timer.cpp gen/gen.o dp/dp.o graph/graph.o -o bin/timer
 
 .PHONY: clean
 clean:
