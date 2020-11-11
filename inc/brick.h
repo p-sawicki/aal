@@ -18,8 +18,17 @@ struct Brick {
         height = std::max(x, y);
     }
 
-    bool operator<(const Brick& rhs) const;
-    bool operator>(const Brick& rhs) const;
+    bool operator<(const Brick& rhs) const {
+        return width < rhs.width && height < rhs.height;
+    }
+
+    bool operator>(const Brick& rhs) const {
+        return width > rhs.width && height > rhs.height;
+    }
+
+    bool operator==(const Brick& rhs) const {
+        return height == rhs.height && width == rhs.width && depth == rhs.depth;
+    }
 };
 
 
