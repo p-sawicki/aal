@@ -27,6 +27,7 @@ public:
     size_t size();
     void addEdge(Node*, Node*);
     void sortTopo();
+    ~DAG();
 };
 
 Tower graph_get_highest_tower(std::istream &stream = std::cin);
