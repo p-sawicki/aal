@@ -1,17 +1,6 @@
 #include "graph.h"
 
 /*
- * Brick class improvements
- */
-bool Brick::operator<(const Brick& rhs) const {
-    return width < rhs.width && height < rhs.height;
-}
-
-bool Brick::operator>(const Brick& rhs) const {
-    return width > rhs.width && height > rhs.height;
-}
-
-/*
  * DAG implementation
  */
 void DAG::addNode(double w, double h, double d) {

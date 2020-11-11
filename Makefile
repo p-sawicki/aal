@@ -23,8 +23,8 @@ gen: gen/gen_main.cpp gen.o
 	$(CC) $(CFLAGS) gen/gen_main.cpp gen/gen.o -o bin/gen
 
 # Trivial tests suite
-tests: tests.cpp dp.o gen.o
-	$(CC) $(CFLAGS) tests.cpp dp/dp.o gen/gen.o -o bin/tests
+tests: tests.cpp dp.o gen.o graph.o
+	$(CC) $(CFLAGS) tests.cpp dp/dp.o gen/gen.o graph/graph.o -o bin/tests
 
 # Auto-tests runner with timer
 timer: timer.cpp gen.o dp.o graph.o

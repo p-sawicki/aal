@@ -1,17 +1,24 @@
 #include "dp.h"
 #include "gen.h"
+#include "graph.h"
 #include <assert.h>
 
 void test_highest_tower1() {
-    auto stream = std::stringstream();
-
+    
     //2 bricks: 1x2x3 and 1x4x5
-    stream << "2\n1 2 3\n1 4 5\n";
+    const std::string input = "2\n1 2 3\n1 4 5\n";
+    auto stream = std::stringstream();
+    auto graph_stream = std::stringstream();
+
+    stream << input;
+    graph_stream << input;
 
     Tower t = get_highest_tower(stream);
+    Tower t_graph = graph_get_highest_tower(graph_stream);
 
     assert(t.depth == 6);
     assert(t.bricks.size() == 2);
+    assert(t.bricks == t_graph.bricks);
 }
 
 void test_highest_tower2() {
@@ -33,6 +40,7 @@ void test_highest_tower2() {
 void test_tower_correctness() {
     auto stream = std::stringstream();
     generate(1000, 1, 1000, stream);
+    auto graph_stream = std::stringstream(stream.str());
 
     Tower tower = get_highest_tower(stream);
     int size = tower.bricks.size();
@@ -43,10 +51,14 @@ void test_tower_correctness() {
         depth += tower.bricks[i].depth;
     }
     assert(depth == tower.depth);
+
+    Tower tower_graph = graph_get_highest_tower(graph_stream);
+    assert(tower.bricks == tower_graph.bricks);
 }
 
 int main() {
     test_highest_tower1();
     test_highest_tower2();
     test_tower_correctness();
+    std::cout << "Tests successful\n";
 }
