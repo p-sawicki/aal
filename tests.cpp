@@ -1,6 +1,7 @@
 #include "dp.h"
 #include "gen.h"
 #include "graph.h"
+#include "bf.h"
 #include <assert.h>
 
 void test_highest_tower1() {
@@ -9,16 +10,20 @@ void test_highest_tower1() {
     const std::string input = "2\n1 2 3\n1 4 5\n";
     auto stream = std::stringstream();
     auto graph_stream = std::stringstream();
+    auto bf_stream = std::stringstream();
 
     stream << input;
     graph_stream << input;
+    bf_stream << input;
 
     Tower t = get_highest_tower(stream);
     Tower t_graph = graph_get_highest_tower(graph_stream);
+    Tower t_bf = bf_get_highest_tower(bf_stream);
 
     assert(t.depth == 6);
     assert(t.bricks.size() == 2);
     assert(t.bricks == t_graph.bricks);
+    assert(t.bricks == t_bf.bricks);
 }
 
 void test_highest_tower2() {
@@ -53,7 +58,7 @@ void test_tower_correctness() {
     assert(depth == tower.depth);
 
     Tower tower_graph = graph_get_highest_tower(graph_stream);
-    assert(tower.bricks == tower_graph.bricks);
+    assert(tower.depth == tower_graph.depth);
 }
 
 int main() {

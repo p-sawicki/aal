@@ -1,7 +1,9 @@
 #include "dp.h"
 
-Tower get_highest_tower(std::vector<Brick> &bricks) {
+Tower get_highest_tower(std::istream &stream) {
+    auto bricks = get_bricks(stream);
     std::sort(bricks.begin(), bricks.end(), [] (const Brick &lhs, const Brick &rhs) { return lhs.width < rhs.width; });
+    
     auto towers = std::list<Tower>();
 
     while (!bricks.empty()) {
@@ -44,22 +46,4 @@ Tower get_highest_tower(std::vector<Brick> &bricks) {
         }
     }
     return towers.front();
-}
-
-Tower get_highest_tower(std::istream &stream) {
-    int bricks_amount = 0;
-    stream >> bricks_amount;
-
-    auto bricks = std::vector<Brick>();
-    for (int i = 0; i < bricks_amount; ++i) {
-        double x, y, z;
-        stream >> x >> y >> z;
-        bricks.emplace_back(Brick(x, y, z));
-        if (x != z)
-            bricks.emplace_back(Brick(z, y, x));
-        if (y != z)
-            bricks.emplace_back(Brick(x, z, y));
-    }
-
-    return get_highest_tower(bricks);
 }

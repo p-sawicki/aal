@@ -1,6 +1,7 @@
 #include "gen.h"
 #include "dp.h"
 #include "graph.h"
+#include "bf.h"
 
 const std::string ALGORITHM_OPTION = "--algorithm";
 const std::string ALGORITHM_DP = "dp";
@@ -61,7 +62,7 @@ int main(int argc, char **argv) {
                     graph_get_highest_tower(stream);
                     break;
                 case BF:
-                    // TODO
+                    bf_get_highest_tower(stream);
                     break;
             }
             auto end = std::chrono::steady_clock::now();
