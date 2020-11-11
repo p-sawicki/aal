@@ -1,7 +1,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include "brick.h"
+#include "utils.h"
 
 struct Node {
     Brick element;

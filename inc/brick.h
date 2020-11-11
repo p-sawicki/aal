@@ -13,7 +13,7 @@ struct Brick {
     double width;
     double depth;
 
-    Brick(const double &x, const double &y, const double &z) : depth(z) {
+    Brick(const double& x, const double& y, const double& z) : depth(z) {
         width = std::min(x, y);
         height = std::max(x, y);
     }
@@ -38,7 +38,7 @@ struct Tower {
 
     Tower() : depth(0) {};
 
-    Tower(const Brick &base, Tower* tower) {
+    Tower(const Brick& base, Tower* tower) {
         depth = base.depth;
         if (tower != nullptr) {
             depth += tower->depth;
@@ -48,6 +48,13 @@ struct Tower {
             bricks = std::vector<Brick>();
         }
         bricks.push_back(base);
+    }
+
+    Tower(const std::vector<Brick>& b) {
+        depth = 0;
+        for (const Brick &brick : b)
+            depth += brick.depth;
+        bricks = b;
     }
 };
 
