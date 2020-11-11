@@ -39,6 +39,11 @@ void DAG::sortTopo() {
         [](Node*& a, Node*& b){return a->topoIndex > b->topoIndex;});
 }
 
+DAG::~DAG() {
+    for (Node* node : nodes)
+        delete node;
+}
+
 
 /*
  * Task solver
