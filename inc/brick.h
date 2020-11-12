@@ -13,6 +13,8 @@ struct Brick {
     double width;
     double depth;
 
+    Brick() : Brick(0, 0, 0) {}
+
     Brick(const double& x, const double& y, const double& z) : depth(z) {
         width = std::min(x, y);
         height = std::max(x, y);
@@ -35,19 +37,17 @@ struct Brick {
 struct Tower {
     std::vector<Brick> bricks;
     double depth;
+    Brick base;
+    Tower* rest;
 
     Tower() : depth(0) {};
 
-    Tower(const Brick& base, Tower* tower) {
-        depth = base.depth;
-        if (tower != nullptr) {
-            depth += tower->depth;
-            bricks = tower->bricks;
-        } else
-        {
-            bricks = std::vector<Brick>();
-        }
-        bricks.push_back(base);
+    Tower(const Brick& b, Tower* tower) {
+        depth = b.depth;
+        base = b;
+        rest = tower;
+        if (rest != nullptr)
+            depth += rest->depth;
     }
 
     Tower(const std::vector<Brick>& b) {
@@ -55,6 +55,15 @@ struct Tower {
         for (const Brick &brick : b)
             depth += brick.depth;
         bricks = b;
+    }
+
+    void fillBricks() {
+        Tower* t = this;
+        while (t != nullptr) {
+            bricks.push_back(t->base);
+            t = t->rest;
+        }
+        std::reverse(bricks.begin(), bricks.end());
     }
 };
 

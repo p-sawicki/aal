@@ -108,8 +108,9 @@ Tower graph_get_highest_tower(std::istream &stream) {
     }
 
     Tower tower;
-    for(auto ir = nodes.rbegin(); ir != nodes.rend(); ++ir)
-        tower = Tower((*ir)->element, &tower);
-
+    for(auto ir = nodes.rbegin(); ir != nodes.rend(); ++ir) {
+        tower.bricks.push_back((*ir)->element);
+        tower.depth += (*ir)->element.depth;
+    }
     return tower;
 }

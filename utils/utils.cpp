@@ -5,6 +5,7 @@ std::vector<Brick> get_bricks(std::istream& stream) {
     stream >> bricks_amount;
 
     auto bricks = std::vector<Brick>();
+    bricks.reserve(bricks_amount);
     for (int i = 0; i < bricks_amount; ++i) {
         double x, y, z;
         stream >> x >> y >> z;
