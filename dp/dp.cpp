@@ -4,7 +4,8 @@ Tower get_highest_tower(std::istream &stream) {
     auto bricks = get_bricks(stream);
     std::sort(bricks.begin(), bricks.end(), [] (const Brick &lhs, const Brick &rhs) { return lhs.width < rhs.width; });
     
-    auto towers = std::list<Tower>();
+    auto towers = std::list<Tower*>();
+    auto addresses = std::vector<Tower*>();
 
     while (!bricks.empty()) {
         double cutoff = 0;
@@ -32,18 +33,26 @@ Tower get_highest_tower(std::istream &stream) {
                 break;
         }
 
-        for (const Brick &apex : apexes) {
+        int size = apexes.size();
+        Tower *new_towers = new Tower[size];
+        addresses.push_back(new_towers);
+        for (int i = 0; i < size; ++i) {
             Tower *best_tower_for_apex = nullptr;
             for (auto tower = towers.begin(); tower != towers.end(); ++tower) {
-                if (apex.width > tower->bricks.back().width && apex.height > tower->bricks.back().height) {
-                    best_tower_for_apex = &*tower;
+                if (apexes[i].width > (*tower)->base.width && apexes[i].height > (*tower)->base.height) {
+                    best_tower_for_apex = *tower;
                     break;
                 }
             }
-            Tower new_tower = Tower(apex, best_tower_for_apex);
-            towers.insert(std::lower_bound(towers.begin(), towers.end(), new_tower, 
-                [](const Tower& a, const Tower& b) {return a.depth > b.depth; }), new_tower);
+            new_towers[i] = Tower(apexes[i], best_tower_for_apex);
+            towers.insert(std::lower_bound(towers.begin(), towers.end(), &new_towers[i], 
+                [](Tower* a, Tower* b) {return a->depth > b->depth; }), &new_towers[i]);
         }
     }
-    return towers.front();
+    Tower ans = *towers.front();
+    ans.fillBricks();
+
+    for (Tower* address : addresses)
+        delete[] address;
+    return ans;
 }
