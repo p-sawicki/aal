@@ -75,15 +75,7 @@ bool operator==(const Edges::Iterator& a, const Edges::Iterator& b) {
         return true;
 }
 bool operator!=(const Edges::Iterator& a, const Edges::Iterator& b) {
-    if(a.mode != b.mode)
-        return true;
-
-    if(a.mode == 0)
-        return a.vec_pos != b.vec_pos;
-    else if(a.mode == 1)
-        return a.range_pos != b.range_pos;
-    else
-        return false;
+    return !(a == b);
 }
 
 
