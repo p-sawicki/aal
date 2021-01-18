@@ -1,3 +1,8 @@
+/*
+ * Plik nagłówkowy gen.h
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #ifndef GEN_H
 #define GEN_H
 

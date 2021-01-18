@@ -1,3 +1,8 @@
+/*
+ * Wrapper konieczny do zbudowania osobnej aplikacji
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #include "graph.h"
 
 int main() {

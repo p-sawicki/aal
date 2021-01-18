@@ -1,3 +1,8 @@
+/*
+ * Plik nagłówkowy bf.h
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #ifndef BF_H
 #define BF_H
 

@@ -1,3 +1,8 @@
+/*
+ * Implementacja generatora przypadków testowych
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #include "gen.h"
 
 void generate(int amount, double min, double max, std::ostream &stream) {

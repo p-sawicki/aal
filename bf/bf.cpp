@@ -1,3 +1,8 @@
+/*
+ * Implementacja algorytmu brute-force
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #include "bf.h"
 
 Tower bf_get_highest_tower(std::istream &stream) {

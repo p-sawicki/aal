@@ -1,3 +1,8 @@
+/*
+ * Plik nagłówkowy graph.h
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #ifndef GRAPH_H
 #define GRAPH_H
 

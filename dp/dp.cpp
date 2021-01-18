@@ -1,3 +1,8 @@
+/*
+ * Implementacja algorytmu dynamicznego programowania
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #include "dp.h"
 
 Tower get_highest_tower(std::istream &stream) {

@@ -1,3 +1,8 @@
+/*
+ * Implementacja algorytmu grafowego
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #include "graph.h"
 
 /*
