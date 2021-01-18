@@ -46,6 +46,8 @@ int main(int argc, char **argv) {
             error(OPTION_ERROR);
     }
 
+    std::vector<std::pair<unsigned int, double>> results;
+
     std::cout << "N,Average time (seconds)\n";
     for (unsigned int bricks = min; bricks <= max; bricks += step) {
         double average_duration = 0;
@@ -68,6 +70,17 @@ int main(int argc, char **argv) {
             auto end = std::chrono::steady_clock::now();
             average_duration += std::chrono::duration<double>(end - start).count() / repeats;
         }
+
+        results.push_back(std::pair(bricks, average_duration));
         std::cout << bricks << "," << average_duration << "\n";
+    }
+
+    double t_med = results[results.size() / 2].second;
+    double T_med = pow(results[results.size() / 2].first, 2);
+
+    std::cout << "n,t(n),q(n)\n";
+    for (const auto& result : results) {
+        std::cout << result.first << "," << result.second << "," <<
+            result.second * T_med / pow(result.first, 2) / t_med << "\n";
     }
 }
