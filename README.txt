@@ -45,12 +45,12 @@ po krótkiej chwili zbudowane aplikacje powinny znajdować się w podkatalogu bi
 W katalogu bin/ dostępne są następujące programy:
 	a) ./dp < input > output - aplikacja rozwiązująca problem z użyciem metody programowania dynamicznego
 	b) ./graph < input > output - aplikacja rozwiązująca problem z użyciem podejścia grafowego
-	c) ./bf < input > output - aplikacja rozwiżaująca problem z użyciem algorytmu brute-force
+	c) ./bf < input > output - aplikacja rozwiązująca problem z użyciem algorytmu brute-force
 	d) ./gen [--amount N] [--min R] [--max R] > output - generator przypadków testowych; na wyjściu wypisanych zostanie "amount" klocków o wymiarach w przedziale <min; max>
 	e) ./tests - aplikacja sprawdzająca kilka testowych przypadków
-	f) ./timer [--algorithm [dp|graph|bf]] [--repeat N] [--min N] [--max N] [--step N] - narzędzie do benchmarkowania wybranego algorytmu; każdy test jest wykonywane "repeat" razy, począwszy od min klocków, co "step", aż do "max" klocków
+	f) ./timer [--algorithm [dp|graph|bf]] [--repeat N] [--min N] [--max N] [--step N] - narzędzie do benchmarkowania wybranego algorytmu; każdy test jest wykonywane "repeat" razy, począwszy od "min" klocków, co "step", aż do "max" klocków
 
-W powyższych opcjach N oznacz liczby całkowite, a R rzeczywiste.
+W powyższych opcjach N oznacza liczby całkowite, a R rzeczywiste.
 
 5. Format danych wejściowych i wyjściowych
 Dane wejściowe do aplikacji mają format: "wysokość szerokość głębokość"; klocki są podawane w kolejnych liniach. Przykład:
