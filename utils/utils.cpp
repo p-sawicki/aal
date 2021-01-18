@@ -1,3 +1,8 @@
+/*
+ * Implementacja funkcji pomocniczych
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #include "utils.h"
 
 std::vector<Brick> get_bricks(std::istream& stream) {

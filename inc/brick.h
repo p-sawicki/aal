@@ -1,3 +1,8 @@
+/*
+ * Plik nagłówkowy brick.h
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #ifndef BRICK_H
 #define BRICK_H
 

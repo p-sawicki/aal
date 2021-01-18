@@ -1,3 +1,8 @@
+/*
+ * Plik nagłówkowy utils.h
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #ifndef UTILS_H
 #define UTILS_H
 

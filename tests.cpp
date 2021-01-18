@@ -1,3 +1,8 @@
+/*
+ * Aplikacja testująca poprawność algorytmów
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #include "dp.h"
 #include "gen.h"
 #include "graph.h"

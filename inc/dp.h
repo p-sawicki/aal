@@ -1,3 +1,8 @@
+/*
+ * Plik nagłówkowy dp.h
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #ifndef DP_H
 #define DP_H
 

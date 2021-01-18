@@ -1,3 +1,8 @@
+/*
+ * Aplikacja testująca czas wykonania algorytmu dla różnych danych wejściowych
+ * Autorzy: Piotr Sawicki, Paweł Wieczorek
+ */
+
 #include "gen.h"
 #include "dp.h"
 #include "graph.h"
